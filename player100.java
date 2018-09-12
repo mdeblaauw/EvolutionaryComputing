@@ -19,9 +19,10 @@ public class player100 implements ContestSubmission
 	public static void main(String[] args) {
 		System.out.println("Start");
 		
-		//print population for testing
-		double[][] pop = init_population(populationSize, 10);
+		player100 awesome = new player100();
+		double[][] pop = awesome.init_population(populationSize, 10);
 		
+		//print population for testing
 		for (double[] x : pop)
 		{
 		   for (double y : x)
@@ -64,7 +65,7 @@ public class player100 implements ContestSubmission
     }
     
 	//Create initial population
-	public static double[][] init_population(int populationSize, int dimension) {
+	public double[][] init_population(int populationSize, int dimension) {
 		//Create 2-dimensional array, which is populationSize X 10 and continuous input in [-5,5]
 		//Do this randomnly with 10 dimensional uniform distribution
 		Random generate = new Random();
@@ -92,6 +93,11 @@ public class player100 implements ContestSubmission
         // init population
         double[][] population = init_population(populationSize, 10);
         // calculate fitness
+        double pop_fitness[] = new double[populationSize];
+        for(int x = 0; x<populationSize; x++) {
+        	pop_fitness[x] = (double) evaluation_.evaluate(population[x]);
+        }
+        
         while(evals<evaluations_limit_){
             // Select parents
         	
