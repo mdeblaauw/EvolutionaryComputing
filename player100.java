@@ -18,7 +18,9 @@ public class player100 implements ContestSubmission
 	
 	public static void main(String[] args) {
 		System.out.println("Start");
-		double[][] pop = init_population();
+		
+		//print population for testing
+		double[][] pop = init_population(populationSize, 10);
 		
 		for (double[] x : pop)
 		{
@@ -61,18 +63,24 @@ public class player100 implements ContestSubmission
         }
     }
     
-	public static double[][] init_population() {
+	//Create initial population
+	public static double[][] init_population(int populationSize, int dimension) {
 		//Create 2-dimensional array, which is populationSize X 10 and continuous input in [-5,5]
 		//Do this randomnly with 10 dimensional uniform distribution
 		Random generate = new Random();
-		double[][] pop = new double[populationSize][10];
+		double[][] pop = new double[populationSize][dimension];
 		
 		for(int x = 0; x < populationSize; x++) {
-			for(int y = 0; y<10; y++) {
+			for(int y = 0; y<dimension; y++) {
 				pop[x][y] = (generate.nextDouble() * 10) - 5;
 			}
 		}
 		return(pop);
+	}
+	
+	//Select parents from population
+	public void select_parents() {
+		
 	}
 	
 	public void run()
@@ -82,9 +90,11 @@ public class player100 implements ContestSubmission
         
         int evals = 0;
         // init population
+        double[][] population = init_population(populationSize, 10);
         // calculate fitness
         while(evals<evaluations_limit_){
             // Select parents
+        	
             // Apply crossover / mutation operators
             double child[] = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
             // Check fitness of unknown fuction
