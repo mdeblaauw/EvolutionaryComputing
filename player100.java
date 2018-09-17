@@ -180,12 +180,12 @@ public class player100 implements ContestSubmission
         	double[][] children;
         	children = crossOver(population, number_childs);
             //double child[] = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
-            // Check fitness of unknown fuction
+            //Check fitness of unknown fuction
             //Double fitness = (double) evaluation_.evaluate(child);
         	double[] children_fitness;
         	children_fitness = calculate_fitness(children, number_childs);
             evals++;
-            // Select survivors
+            // Select survivors (Replace on basis of fitness)
             population = children;
             pop_fitness = children_fitness;
             i++;
